@@ -15,8 +15,12 @@ namespace Boolean.CSharp.Test
         }
 
         [Test]
-        public void TestQuestion1()
+        public void TestAddAccount()
         {
+            Person person = new Person();
+            person.AddAccount(AccountType.Default);
+
+            Assert.That(person.BankAccount != null);
 
         }
 
