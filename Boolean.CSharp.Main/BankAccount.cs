@@ -8,15 +8,16 @@ namespace Boolean.CSharp.Main
 {
     public abstract class BankAccount
     {
-        private List<Payment> _payments = new List<Payment>();
-        private Type _accountType;
+        private List<Payment> _payments;
+        public Guid ID { get; set; }
+        //private Type _accountType;
 
-        public BankAccount(Type accountType)
+        public BankAccount()
         {
-            this._accountType = accountType;
+            _payments = new List<Payment>();
+            //this._accountType = accountType;
         }
 
         public List<Payment> GetPaymentHistory() => _payments;
-        public Type AccountType => _accountType;
     }
 }

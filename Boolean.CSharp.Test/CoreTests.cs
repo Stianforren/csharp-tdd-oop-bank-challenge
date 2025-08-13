@@ -20,7 +20,7 @@ namespace Boolean.CSharp.Test
             Person person = new Person();
             person.AddAccount(AccountType.Default);
 
-            Assert.That(person.BankAccount != null);
+            Assert.That(person.BankAccounts != null);
 
         }
 
