@@ -80,5 +80,18 @@ namespace Boolean.CSharp.Test
             Assert.That(bk.GetPaymentHistory().Count == 2);
 
         }
+
+        [Test]
+        public void TestRequestOverdraft()
+        {
+            Person person = new Person();
+            person.AddAccount(AccountType.Default, Branch.Bergen);
+
+            Guid id = person.BankAccounts.First().Key;
+            BankAccount bk = person.BankAccounts[id];
+
+            person.requestOverdraft();
+            Assert.IsTrue(bk.overdraftRequested());
+        }
     }
 }

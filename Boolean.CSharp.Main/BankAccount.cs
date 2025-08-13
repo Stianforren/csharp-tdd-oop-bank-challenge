@@ -65,5 +65,9 @@ namespace Boolean.CSharp.Main
             return sb.ToString();
         }
 
+        public bool? overdraftRequested()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
