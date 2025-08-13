@@ -31,8 +31,6 @@ namespace Boolean.CSharp.Main
             }
         }
         public Dictionary<Guid, BankAccount> BankAccounts { get { return _accounts; } }
-
-
         public void AddAccount(AccountType accountType)
         {
             if (accountType.Equals(AccountType.Default))

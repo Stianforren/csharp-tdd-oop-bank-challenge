@@ -17,4 +17,10 @@ namespace Boolean.CSharp.Main
         Customer,
         Manager
     }
+
+    public enum StatementType
+    {
+        Withdraw,
+        Deposit
+    }
 }
