@@ -90,7 +90,7 @@ namespace Boolean.CSharp.Test
             Guid id = person.BankAccounts.First().Key;
             BankAccount bk = person.BankAccounts[id];
 
-            person.requestOverdraft();
+            person.requestOverdraft(bk);
             Assert.IsTrue(bk.overdraftRequested());
         }
     }

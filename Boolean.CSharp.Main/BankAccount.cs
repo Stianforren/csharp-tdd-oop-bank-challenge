@@ -11,12 +11,14 @@ namespace Boolean.CSharp.Main
     {
         private List<Statement> _payments;
         private Branch _branch;
+        private bool _overdraftRequested;
         public Guid ID { get; set; }
 
         public BankAccount(Branch branch)
         {
             _payments = new List<Statement>();
             _branch = branch;
+            _overdraftRequested = false;
         }
 
         public List<Statement> GetPaymentHistory() => _payments;
@@ -65,9 +67,10 @@ namespace Boolean.CSharp.Main
             return sb.ToString();
         }
 
-        public bool? overdraftRequested()
+        public bool overdraftRequested()
         {
-            throw new NotImplementedException();
+            return _overdraftRequested;
         }
+        public void requestOverdraft() { _overdraftRequested = true; }
     }
 }
