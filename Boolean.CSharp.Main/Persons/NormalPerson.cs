@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Boolean.CSharp.Main.Accounts
+namespace Boolean.CSharp.Main.Persons
 {
-    public class DefaultAccount : BankAccount
+    public class NormalPerson : Person
     {
-        public DefaultAccount(Branch branch) : base(branch)
+        public NormalPerson() : base()
         {
-
+            
         }
-
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Boolean.CSharp.Main
 {
-    public class Person
+    public abstract class Person
     {
         public Guid person_id = Guid.NewGuid();
         private Role _role;
@@ -49,5 +49,6 @@ namespace Boolean.CSharp.Main
         {
             bk.requestOverdraft();
         }
+        public Role role { get { return _role; } }
     }
 }

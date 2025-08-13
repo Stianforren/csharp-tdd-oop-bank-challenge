@@ -12,6 +12,7 @@ namespace Boolean.CSharp.Main
         private List<Statement> _payments;
         private Branch _branch;
         private bool _overdraftRequested;
+        private bool _overdraft;
         public Guid ID { get; set; }
 
         public BankAccount(Branch branch)
@@ -19,6 +20,7 @@ namespace Boolean.CSharp.Main
             _payments = new List<Statement>();
             _branch = branch;
             _overdraftRequested = false;
+            _overdraft = false;
         }
 
         public List<Statement> GetPaymentHistory() => _payments;
@@ -71,6 +73,16 @@ namespace Boolean.CSharp.Main
         {
             return _overdraftRequested;
         }
-        public void requestOverdraft() { _overdraftRequested = true; }
+        public void requestOverdraft() { _overdraftRequested = true; } 
+
+        public bool approve(Person person)
+        {
+            if (person.role == Role.Manager)
+            {
+                _overdraft = true;
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Boolean.CSharp.Main;
 using Boolean.CSharp.Main.Accounts;
+using Boolean.CSharp.Main.Persons;
 using NUnit.Framework;
 
 namespace Boolean.CSharp.Test
@@ -18,7 +19,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestAddAccount()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Assert.That(person.BankAccounts != null);
@@ -28,7 +29,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestDeposit()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Guid id = person.BankAccounts.First().Key;
@@ -43,7 +44,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestWithdraw()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Guid id = person.BankAccounts.First().Key;
@@ -58,7 +59,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestAccountHasBranch()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Guid id = person.BankAccounts.First().Key;
@@ -68,7 +69,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestGenerateBankStatement()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Guid id = person.BankAccounts.First().Key;
@@ -84,7 +85,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void TestRequestOverdraft()
         {
-            Person person = new Person();
+            Person person = new NormalPerson();
             person.AddAccount(AccountType.Default, Branch.Bergen);
 
             Guid id = person.BankAccounts.First().Key;
@@ -92,6 +93,22 @@ namespace Boolean.CSharp.Test
 
             person.requestOverdraft(bk);
             Assert.IsTrue(bk.overdraftRequested());
+        }
+
+        [Test]
+        public void TestApproveOrRejectRequest()
+        {
+            Person manager = new Manager();
+            Person person = new NormalPerson();
+            person.AddAccount(AccountType.Default, Branch.Bergen);
+
+            Guid id = person.BankAccounts.First().Key;
+            BankAccount bk = person.BankAccounts[id];
+
+            person.requestOverdraft(bk);
+            Assert.IsFalse(bk.approve(person));
+            Assert.IsTrue(bk.approve(manager));
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Boolean.CSharp.Main;
+using Boolean.CSharp.Main.Persons;
 
-Person person = new Person();
+Person person = new NormalPerson();
 person.AddAccount(AccountType.Default, Branch.Bergen);
 Guid id = person.BankAccounts.First().Key;
 
