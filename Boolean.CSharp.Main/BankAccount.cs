@@ -22,6 +22,20 @@ namespace Boolean.CSharp.Main
         public List<Statement> GetPaymentHistory() => _payments;
         public Branch Branch { get { return _branch; } }
 
+        public void deposit(decimal amount)
+        {
+            _payments.Add(new Statement(StatementType.Deposit, amount));
+        }
+
+        public void withdraw(decimal amount)
+        {
+            _payments.Add(new Statement(StatementType.Withdraw, amount));
+        }
+
+        public decimal getBalance()
+        {
+            return _payments.Sum(x => x.StatementType == StatementType.Deposit ? x.Amount : -x.Amount);
+        }
         public string printPaymentHistory()
         {
             Dictionary<int,string> strings = new Dictionary<int,string>();
@@ -51,19 +65,5 @@ namespace Boolean.CSharp.Main
             return sb.ToString();
         }
 
-        public decimal getBalance()
-        {
-            return _payments.Sum(x => x.StatementType == StatementType.Deposit ? x.Amount : -x.Amount);
-        }
-
-        public void deposit(decimal amount)
-        {
-            _payments.Add(new Statement(StatementType.Deposit, amount));
-        }
-
-        public void withdraw(decimal amount)
-        {
-            _payments.Add(new Statement(StatementType.Withdraw, amount));
-        }
     }
 }

@@ -64,5 +64,21 @@ namespace Boolean.CSharp.Test
             Guid id = person.BankAccounts.First().Key;
             Assert.That(person.BankAccounts[id].Branch == Branch.Bergen);
         }
+
+        [Test]
+        public void TestGenerateBankStatement()
+        {
+            Person person = new Person();
+            person.AddAccount(AccountType.Default, Branch.Bergen);
+
+            Guid id = person.BankAccounts.First().Key;
+            BankAccount bk = person.BankAccounts[id];
+
+            bk.deposit(1000);
+            bk.deposit(3000);
+
+            Assert.That(bk.GetPaymentHistory().Count == 2);
+
+        }
     }
 }
