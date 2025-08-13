@@ -23,4 +23,11 @@ namespace Boolean.CSharp.Main
         Withdraw,
         Deposit
     }
+
+    public enum Branch
+    {
+        Oslo,
+        Bergen, 
+        Trondheim
+    }
 }

@@ -8,7 +8,7 @@ namespace Boolean.CSharp.Main.Accounts
 {
     public class SavingsAccount : BankAccount
     {
-        public SavingsAccount() : base()
+        public SavingsAccount(Branch branch) : base(branch)
         {
             
         }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Boolean.CSharp.Main
 {
-    public class Statements
+    public class Statement
     {
         private DateTime _created;
         private StatementType _StatementType;
         private decimal _amount;
-        public Statements(StatementType statementType, decimal amount)
+        public Statement(StatementType statementType, decimal amount)
         {
             this._created = DateTime.Now;
             this._StatementType = statementType;

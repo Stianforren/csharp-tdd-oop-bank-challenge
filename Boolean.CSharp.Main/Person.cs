@@ -31,16 +31,16 @@ namespace Boolean.CSharp.Main
             }
         }
         public Dictionary<Guid, BankAccount> BankAccounts { get { return _accounts; } }
-        public void AddAccount(AccountType accountType)
+        public void AddAccount(AccountType accountType, Branch branch)
         {
             if (accountType.Equals(AccountType.Default))
             {
-                BankAccount bankAccount = new DefaultAccount();
+                BankAccount bankAccount = new DefaultAccount(branch);
                 _accounts.Add(bankAccount.ID, bankAccount);
             }
             else if (accountType.Equals(AccountType.Savings))
             {
-                BankAccount savingsAccount = new SavingsAccount();
+                BankAccount savingsAccount = new SavingsAccount(branch);
                 _accounts.Add(savingsAccount.ID, savingsAccount);
             }
         }

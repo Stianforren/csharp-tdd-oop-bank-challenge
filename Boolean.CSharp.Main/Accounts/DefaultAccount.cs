@@ -9,7 +9,7 @@ namespace Boolean.CSharp.Main.Accounts
     public class DefaultAccount : BankAccount
     {
         private decimal _balance;
-        public DefaultAccount() : base()
+        public DefaultAccount(Branch branch) : base(branch)
         {
             this._balance = 0;
         }
