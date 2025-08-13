@@ -6,5 +6,5 @@
 |BankAccount.cs|Withdraw(decimal amount)|so i can withdraw money|removes given amount from user|
 |BankAccount.cs|printPaymentHistory()|so i dont store balance in memory|utilizes transactionhistory to calucalte balance at given time|
 |BankAccount.cs|BankAcount(Branch branch)|so every acount is assosiated with branch|provides each bankacount with a branch|
-|BankAccount.cs|requestOverdraft|so i can have overdraft on my acount|sends request to account|
+|Person.cs|requestOverdraft(BankAccount bk)|so i can have overdraft on my acount|sends request to account|
 |BankAccount.cs|approve(Person person)|si i can approve or reject overdraft requests|true if manager, false otherwise|

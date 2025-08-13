@@ -25,6 +25,31 @@ namespace Boolean.CSharp.Test
             Assert.That(person.BankAccounts != null);
 
         }
+        [Test]
+        public void TestAddDefaultAccount()
+        {
+            Person person = new NormalPerson();
+            person.AddAccount(AccountType.Default, Branch.Bergen);
+
+            Guid id = person.BankAccounts.First().Key;
+            BankAccount bk = person.BankAccounts[id];
+
+            Assert.That(bk.GetType() == typeof(DefaultAccount));
+           
+        }
+
+        [Test]
+        public void TestAddSavingsAccount()
+        {
+            Person person = new NormalPerson();
+            person.AddAccount(AccountType.Savings, Branch.Bergen);
+
+            Guid id = person.BankAccounts.First().Key;
+            BankAccount bk = person.BankAccounts[id];
+
+            Assert.That(bk is SavingsAccount);
+
+        }
 
         [Test]
         public void TestDeposit()
